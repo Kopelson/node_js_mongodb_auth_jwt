@@ -45,3 +45,10 @@ compare password with password in database using bcrypt, if it is correct
 generate a token using jsonwebtoken
 return user information & access Token
 
+### Controller for testing Authorization
+
+There are 4 functions:
+– /api/test/all for public access
+– /api/test/user for loggedin users (any role)
+– /api/test/mod for moderator users
+– /api/test/admin for admin users
