@@ -52,3 +52,21 @@ There are 4 functions:
 – /api/test/user for loggedin users (any role)
 – /api/test/mod for moderator users
 – /api/test/admin for admin users
+
+### Define Routes
+
+When a client sends request for an endpoint using HTTP request (GET, POST, PUT, DELETE), we need to determine how the server will response by setting up the routes.
+
+We can separate our routes into 2 part: for Authentication and for Authorization (accessing protected resources).
+
+Authentication:
+
+POST /api/auth/signup
+POST /api/auth/signin
+
+Authorization:
+
+GET /api/test/all
+GET /api/test/user for loggedin users (user/moderator/admin)
+GET /api/test/mod for moderator
+GET /api/test/admin for admin
