@@ -8,6 +8,16 @@ const db = require('../models');
 const User = db.user;
 const Role = db.role;
 
+const { TokenExpiredError } = jtw;
+
+catchError = (err, res) => {
+  if (err instanceof TokenExpiredError) {
+    return res.status(401).send({ message: "Unauthorized! Access Token was expired!" });
+  }
+
+  return res.sendStatus(401).send({ message: "Unauthorized!" });
+}
+
 verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"];
 
@@ -88,9 +98,10 @@ isModerator = (req, res, next) => {
 };
 
 const authJwt = {
-    verifyToken,
-    isAdmin,
-    isModerator
+  catchError,
+  verifyToken,
+  isAdmin,
+  isModerator
 };
 
 module.exports = authJwt;
