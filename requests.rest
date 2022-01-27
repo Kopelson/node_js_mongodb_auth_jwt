@@ -97,3 +97,40 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZTZiMjhhNWU
 
 GET http://localhost:8080/api/test/admin
 x-access-token: ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZTZiMjhhNWU3MGQxMGI2ZDM5ZSIsImlhdCI6MTY0MzMxNjcyOSwiZXhwIjoxNjQzNDAzMTI5fQ.R8B3hOmnQpOU6h2NEu10UcSu18JiUDNDzZ3PtfYcYQY
+
+
+###
+# Testing refresh tokens
+# Send /signin request, return response with refreshToken.
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "modera",
+    "password": "password"
+}
+
+###
+# Access resource successfully with accessToken.
+# When the accessToken is expired, user cannot use it anymore.
+GET http://localhost:8080/api/test/mod
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZTU1MjhhNWU3MGQxMGI2ZDM5OCIsImlhdCI6MTY0MzMyMzIxNywiZXhwIjoxNjQzMzIzMjc3fQ.l82XTscGxVPZ-VyysGi6y-iDqZ4K5rQ7BYPQLw97x4I
+
+###
+# Send /refreshtoken request, return response with new accessToken.
+# Send an expired Refresh Token.
+POST http://localhost:8080/api/auth/refreshtoken
+Content-Type: application/json
+
+{
+    "refreshToken": "841e23c3-960f-453e-bae1-410830f479ae"
+}
+
+###
+# Send an inexistent Refresh Token.
+POST http://localhost:8080/api/auth/refreshtoken
+Content-Type: application/json
+
+{
+    "refreshToken": "941e23c3-960f-453e-bae1-410830f479ae"
+}
