@@ -1,0 +1,33 @@
+{
+  "name": "node_js_mongodb_auth_jwt",
+  "version": "1.0.0",
+  "description": "Node.js + MongoDB: JTW Authentication & Authorization",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kopelson/node_js_mongodb_auth_jwt.git"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "jwt",
+    "authentication",
+    "mongodb"
+  ],
+  "author": "Kopelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kopelson/node_js_mongodb_auth_jwt/issues"
+  },
+  "homepage": "https://github.com/Kopelson/node_js_mongodb_auth_jwt#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8"
+  }
+}
