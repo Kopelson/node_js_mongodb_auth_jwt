@@ -70,3 +70,8 @@ GET /api/test/all
 GET /api/test/user for loggedin users (user/moderator/admin)
 GET /api/test/mod for moderator
 GET /api/test/admin for admin
+
+
+## Conclusion
+
+Oh yeah! Today we've learned so many interesting things about Node.js MongoDB User Authentication with JWT (JSONWebToken) in just a Node.js Express Rest Api example. You also know way to implement role-based Authorization to restrict access to protected resources.

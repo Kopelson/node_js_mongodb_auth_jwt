@@ -1,0 +1,99 @@
+GET http://localhost:8080/
+
+###
+# Register some users with /signup API:
+
+# admin with admin role
+# modera with moderator and user roles
+# bezkoder with user role
+
+POST http://localhost:8080/api/auth/signup 
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "email": "admin@kopelson.com",
+    "password": "password",
+    "roles": ["admin"]
+}
+
+###
+POST http://localhost:8080/api/auth/signup 
+Content-Type: application/json
+
+{
+    "username": "modera",
+    "email": "mod@kopelson.com",
+    "password": "password",
+    "roles": ["user", "moderator"]
+}
+
+###
+POST http://localhost:8080/api/auth/signup 
+Content-Type: application/json
+
+{
+    "username": "kopelson",
+    "email": "user@kopelson.com",
+    "password": "password",
+    "roles": ["user"]
+}
+
+###
+# Access protected resource: GET /api/test/user
+GET http://localhost:8080/api/test/user
+
+###
+#Access public resource: GET /api/test/all
+
+GET http://localhost:8080/api/test/all
+
+###
+# Login an account (with wrong password): POST /api/auth/signin
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "kopelson",
+    "password": "password1"
+}
+
+### 
+# Login an legal account: POST /api/auth/signin
+
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+    "username": "kopelson",
+    "password": "password"
+}
+
+###
+# Access protected resources: GET /api/test/user
+
+GET http://localhost:8080/api/test/user
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZWE3MjhhNWU3MGQxMGI2ZDNhNCIsImlhdCI6MTY0MzMxMTI2OCwiZXhwIjoxNjQzMzk3NjY4fQ.34aSMXTCk3-sN-CTVh0uM4rNcbjRh0JorwE9-_CL1DY
+
+
+###
+# GET /api/test/admin
+GET http://localhost:8080/api/test/admin
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZTZiMjhhNWU3MGQxMGI2ZDM5ZSIsImlhdCI6MTY0MzMxNjcyOSwiZXhwIjoxNjQzNDAzMTI5fQ.R8B3hOmnQpOU6h2NEu10UcSu18JiUDNDzZ3PtfYcYQY
+
+
+###
+# If we use a wrong access token:
+
+GET http://localhost:8080/api/test/admin
+x-access-token: ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjJlZTZiMjhhNWU3MGQxMGI2ZDM5ZSIsImlhdCI6MTY0MzMxNjcyOSwiZXhwIjoxNjQzNDAzMTI5fQ.R8B3hOmnQpOU6h2NEu10UcSu18JiUDNDzZ3PtfYcYQY
